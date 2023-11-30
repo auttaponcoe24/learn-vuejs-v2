@@ -1,15 +1,21 @@
 <template>
 	<Card>
-		<h1>ชื่อ : {{ name }}</h1>
-		<div>
-			<button @click="showDescription(id)">ดูรายละเอียด</button>&nbsp;
-			<button @click="deleteEmployee(id)">ลบข้อมูล</button>
-		</div>
-		<transition name="fade">
-			<div v-show="isVisible">
-				<p>เงินเดือน : {{ salary }}, ตำแหน่งงาน : {{ department }}</p>
+		<template v-slot:card-header>
+			<h1>ชื่อ : {{ name }}</h1>
+		</template>
+		<template v-slot:card-button>
+			<div>
+				<button @click="showDescription(id)">ดูรายละเอียด</button>&nbsp;
+				<button @click="deleteEmployee(id)">ลบข้อมูล</button>
 			</div>
-		</transition>
+		</template>
+		<template v-slot:card-content>
+			<transition name="fade">
+				<div v-show="isVisible">
+					<p>เงินเดือน : {{ salary }}, ตำแหน่งงาน : {{ department }}</p>
+				</div>
+			</transition>
+		</template>
 	</Card>
 </template>
 <script>
@@ -68,6 +74,7 @@ export default {
 } */
 
 h1 {
+	margin: 0.5rem 0;
 }
 
 button {

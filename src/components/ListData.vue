@@ -1,7 +1,4 @@
 <template>
-	<!-- <Person name="ก้อง" salary="25000" />
-		<Person name="โจโจ้" salary="30000" />
-		<Person name="Doe jo" /> -->
 	<ul>
 		<Person
 			v-for="(item, index) in employees"
