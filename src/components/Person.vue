@@ -1,18 +1,25 @@
 <template>
-	<li>
+	<Card>
 		<h1>ชื่อ : {{ name }}</h1>
-		<button @click="showDescription(id)">ดูรายละเอียด</button>&nbsp;
-		<button @click="deleteEmployee(id)">ลบข้อมูล</button>
+		<div>
+			<button @click="showDescription(id)">ดูรายละเอียด</button>&nbsp;
+			<button @click="deleteEmployee(id)">ลบข้อมูล</button>
+		</div>
 		<transition name="fade">
 			<div v-show="isVisible">
 				<p>เงินเดือน : {{ salary }}, ตำแหน่งงาน : {{ department }}</p>
 			</div>
 		</transition>
-	</li>
+	</Card>
 </template>
 <script>
+import Card from "./Card.vue";
+
 export default {
 	name: "Person",
+	components: {
+		Card,
+	},
 	data() {
 		return {};
 	},
@@ -47,13 +54,10 @@ export default {
 			this.$emit("delete", id);
 		},
 	},
-	// props: {
-	// 	name,
-	// },
 };
 </script>
 <style scoped>
-li {
+/* li {
 	margin: 1rem 0;
 	font-size: 1rem;
 	font-weight: bold;
@@ -61,6 +65,9 @@ li {
 	padding: 0.5rem;
 	color: #1f1f1f;
 	border-radius: 1rem;
+} */
+
+h1 {
 }
 
 button {
@@ -69,8 +76,8 @@ button {
 	border: 1px solid #ff0077;
 	background-color: #ff0077;
 	color: #fff;
-	padding: 2px 1rem;
-	border-radius: 1rem;
+	padding: 0.2rem 1rem;
+	border-radius: 0.4rem;
 	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
