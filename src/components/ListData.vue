@@ -2,18 +2,19 @@
 	<!-- <Person name="ก้อง" salary="25000" />
 		<Person name="โจโจ้" salary="30000" />
 		<Person name="Doe jo" /> -->
-	<!-- <ul> -->
-	<Person
-		v-for="(item, index) in employees"
-		:key="item.id"
-		:id="item.id"
-		:name="item.name"
-		:salary="item.salary"
-		:department="item.department"
-		:isVisible="item.isVisible"
-		@show="toggleVisible"
-	/>
-	<!-- </ul> -->
+	<ul>
+		<Person
+			v-for="(item, index) in employees"
+			:key="item.id"
+			:id="item.id"
+			:name="item.name"
+			:salary="item.salary"
+			:department="item.department"
+			:isVisible="item.isVisible"
+			@show="toggleVisible"
+			@delete="deleteEmp"
+		/>
+	</ul>
 </template>
 
 <script>
@@ -62,6 +63,10 @@ export default {
 				return item;
 			});
 		},
+		deleteEmp(id) {
+			// console.log("child ID = ", id);
+			this.employees = this.employees.filter((item) => item.id !== id);
+		},
 	},
 };
 </script>
@@ -74,9 +79,5 @@ ul {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
-}
-
-li {
-	list-style-type: none;
 }
 </style>
