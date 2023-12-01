@@ -70,6 +70,14 @@ export default {
 				skill: this.employee.skill,
 			};
 			this.$emit("save", newEmployee);
+			this.resetForm();
+		},
+		resetForm() {
+			this.employee.name = "";
+			this.employee.salary = 0;
+			this.employee.department = "ผ่านการตลาด";
+			this.employee.gender = "";
+			this.employee.skill = [];
 		},
 	},
 };
